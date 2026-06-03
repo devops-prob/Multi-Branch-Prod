@@ -69,8 +69,8 @@ stages{
 
                         git diff --cached --quiet || git commit -m "Update deployment image to ${DOCKER_IMAGE}:${IMAGE_TAG}"
 
-                        git push https://\$GIT_USERNAME:\$GIT_TOKEN@github.com/devopsprob10/Main-Branch-Code.git main
-                        """
+                        git push https://\$GIT_USERNAME:\$GIT_TOKEN@github.com/devops-prob/Main-Branch-Code.git main
+                         """
                 }
             }
         }

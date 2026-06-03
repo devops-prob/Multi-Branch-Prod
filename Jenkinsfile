@@ -63,7 +63,7 @@ stages{
                     git checkout main
                     git reset --hard origin/main
 
-                    sed -i 's|image: jinendra7545/my-flask-app:.*|image: ${DOCKER_IMAGE}:${IMAGE_TAG}|g' k8s/deployment.yaml
+                    sed -i 's|image: jinendra7545/my-flask-app:.*|image: ${DOCKER_IMAGE}:${IMAGE_TAG}|g' k8s/deployment.yml
 
                     git add k8s/deployment.yaml
 

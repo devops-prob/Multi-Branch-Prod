@@ -68,8 +68,8 @@ stages{
                         git add k8s/deployment.yml
 
                         git diff --cached --quiet || git commit -m "Update deployment image to ${DOCKER_IMAGE}:${IMAGE_TAG}"
+                        git push https://\$GIT_USERNAME:\$GIT_TOKEN@github.com/devops-prob/Multi-Branch-Prod.git main
 
-                        git push https://\$GIT_USERNAME:\$GIT_TOKEN@github.com/devops-prob/Main-Branch-Code.git main
                          """
                 }
             }

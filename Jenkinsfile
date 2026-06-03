@@ -53,24 +53,24 @@ stages{
                     usernameVariable: 'GIT_USERNAME',
                     passwordVariable: 'GIT_TOKEN'
                 )]){
-                    sh """
-                    set -e
+                   sh """
+                        set -e
 
-                    git config --global user.name "\$GIT_USERNAME"
-                    git config --global user.email "${GIT_EMAIL}"
+                        git config --global user.name "\$GIT_USERNAME"
+                        git config --global user.email "${GIT_EMAIL}"
 
-                    git fetch origin
-                    git checkout main
-                    git reset --hard origin/main
+                        git fetch origin
+                        git checkout main
+                        git reset --hard origin/main
 
-                    sed -i 's|image: jinendra7545/my-flask-app:.*|image: ${DOCKER_IMAGE}:${IMAGE_TAG}|g' k8s/deployment.yml
+                        sed -i 's|image: jinendra7545/my-flask-app:.*|image: ${DOCKER_IMAGE}:${IMAGE_TAG}|g' k8s/deployment.yml
 
-                    git add k8s/deployment.yaml
+                        git add k8s/deployment.yml
 
-                    git diff --cached --quiet || git commit -m "Update deployment image to ${DOCKER_IMAGE}:${IMAGE_TAG}"
+                        git diff --cached --quiet || git commit -m "Update deployment image to ${DOCKER_IMAGE}:${IMAGE_TAG}"
 
-                    git push https://\$GIT_USERNAME:\$GIT_TOKEN@github.com/devopsprob10/Main-Branch-Code.git main
-                    """
+                        git push https://\$GIT_USERNAME:\$GIT_TOKEN@github.com/devopsprob10/Main-Branch-Code.git main
+                        """
                 }
             }
         }
